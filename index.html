@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akhil Ashraf Ali - AI Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            padding: 0.5rem 0;
+            color: #555;
+        }
+
+        .skill-category li:before {
+            content: "▹ ";
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 2rem;
+            transition: all 0.3s;
+            background: #fff;
+        }
+
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .project-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .experience-card {
+            background: #f8f9ff;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-card .date {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .experience-card ul {
+            padding-left: 1.5rem;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .contact-info {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-links a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-links a:hover {
+            color: #764ba2;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Akhil Ashraf Ali</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <h1>Akhil Ashraf Ali</h1>
+        <p>AI Engineer | LLM Specialist | NLP Developer</p>
+        <div class="hero-links">
+            <a href="#contact" class="cta-button">Get In Touch</a>
+            <a href="https://github.com/akhil-ashraf" target="_blank" class="cta-button secondary">View GitHub</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>
+                    AI Engineer specializing in large language models, natural language processing, and end-to-end ML pipeline
+                    development. Experienced in building production-ready AI applications using modern frameworks including
+                    Langchain, PyTorch, and TensorFlow. Proven ability to design and deploy scalable solutions with RAG
+                    architectures, sentiment analysis systems, and intelligent document processing. Passionate about leveraging open-source AI tools to solve real-world problems.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <strong>Location:</strong> Sharjah, UAE
+                </p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>AI & Machine Learning</h3>
+                    <ul>
+                        <li>TensorFlow, PyTorch, Scikit-learn</li>
+                        <li>Langchain, Langgraph</li>
+                        <li>Large Language Models (LLMs)</li>
+                        <li>Natural Language Processing</li>
+                        <li>RAG Systems</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Programming & Development</h3>
+                    <ul>
+                        <li>Python, SQL</li>
+                        <li>FastAPI</li>
+                        <li>HTML, CSS, JavaScript</li>
+                        <li>Pandas, NumPy, Matplotlib</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>DevOps & Deployment</h3>
+                    <ul>
+                        <li>Docker</li>
+                        <li>Render Cloud Platform</li>
+                        <li>GitHub Actions (CI/CD)</li>
+                        <li>Git, GitHub</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Sentiment Analysis Web Application</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">GitHub Actions</span>
+                    </div>
+                    <p>Architected and deployed a production-grade sentiment analysis system serving 200+ daily requests. Built RESTful API using FastAPI with comprehensive error handling and request validation. Designed responsive web interface enabling real-time sentiment prediction with sub-second latency. Implemented CI/CD pipeline with automated testing, building, and deployment to Render cloud platform.</p>
+                    <div class="project-links">
+                        <a href="https://sentiment-analysis-api-xxlb.onrender.com" target="_blank" class="project-link">Live Demo →</a>
+                        <a href="https://github.com/akhil-ashraf/sentiment-analysis-api" target="_blank" class="project-link">GitHub →</a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>AI Web Crawler with RAG-Powered Q&A</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Langchain</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Ollama</span>
+                        <span class="tech-tag">Selenium</span>
+                    </div>
+                    <p>Developed an intelligent web crawler capable of extracting, processing, and indexing content from any URL. Implemented custom RAG system using entirely open-source tools and local models. Built semantic search functionality using Langchain for document chunking and Ollama for embeddings. Created interactive chatbot interface allowing users to query scraped content with natural language. Achieved fully offline operation without dependency on external APIs, ensuring data privacy and cost efficiency.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>AI-Powered PDF Question Answering System</h3>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Langchain</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Ollama</span>
+                        <span class="tech-tag">PDFPlumber</span>
+                    </div>
+                    <p>Built document intelligence system enabling users to upload PDFs and interact with content through natural language queries. Implemented semantic similarity search to retrieve relevant document sections with high precision. Integrated local LLM (DeepSeek-r1) for generating accurate, context-aware answers from PDF content. Designed intuitive Streamlit interface for seamless PDF upload and question-answering workflow. Demonstrated practical RAG implementation running completely offline, prioritizing user privacy.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-card">
+                <h3>Data Analytics Project - Mobile Gaming Application</h3>
+                <div class="date">2025</div>
+                <ul>
+                    <li>Supported data analyst in automating data workflows using Google Cloud Notebook for mobile card game analytics</li>
+                    <li>Performed data cleaning and preprocessing on player behavior, transaction, and engagement datasets using Python and SQL</li>
+                    <li>Gained practical experience in ETL pipeline development, data quality assurance, and analytics reporting</li>
+                    <li>Developed SQL queries for game performance and player retention analysis under mentorship</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Education & Certifications</h2>
+            <div class="experience-card">
+                <h3>Bachelor of Technology in Artificial Intelligence and Data Science</h3>
+                <div class="date">2020 - 2024</div>
+                <p>MES College of Engineering, Kuttipuram, India</p>
+            </div>
+            <div class="experience-card">
+                <h3>Certifications</h3>
+                <ul>
+                    <li>Generative AI - LinkedIn</li>
+                    <li>Fundamentals of LLMs - Hugging Face</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Let's collaborate on exciting AI projects!</p>
+                <div class="contact-links">
+                    <a href="mailto:akhilashraf51@gmail.com">
+                        <span>📧</span> akhilashraf51@gmail.com
+                    </a>
+                    <a href="tel:+971581035589">
+                        <span>📱</span> +971 581035589
+                    </a>
+                    <a href="https://linkedin.com/in/akhil-ashraf-ali" target="_blank">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="https://github.com/akhil-ashraf" target="_blank">
+                        <span>💻</span> GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Akhil Ashraf Ali. All rights reserved.</p>
+    </footer>
+</body>
+</html>
