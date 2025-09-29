@@ -17,6 +17,7 @@
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            scroll-behavior: smooth;
         }
 
         header {
@@ -160,6 +161,14 @@
             padding: 3rem;
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
@@ -188,6 +197,14 @@
             padding: 2rem;
             border-radius: 15px;
             border-left: 4px solid #667eea;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .skill-category.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .skill-category h3 {
@@ -224,6 +241,13 @@
             padding: 2rem;
             transition: all 0.3s;
             background: #fff;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
@@ -590,6 +614,56 @@
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
             }
+        });
+
+        // Scroll animations - Intersection Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Add staggered delay for multiple items
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Observe skill categories with stagger
+        document.querySelectorAll('.skill-category').forEach((skill, index) => {
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 150);
+                    }
+                });
+            }, observerOptions);
+            skillObserver.observe(skill);
+        });
+
+        // Observe project cards with stagger
+        document.querySelectorAll('.project-card').forEach((project, index) => {
+            const projectObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, index * 200);
+                    }
+                });
+            }, observerOptions);
+            projectObserver.observe(project);
         });
     </script>
 </body>
